@@ -55,27 +55,39 @@ const icons = [
 ];
 
 const first = {
-  start: { opacity: 0 },
+  start: {
+    x: -50,
+    opacity: 0,
+    transition: { type: "spring", when: "beforeChildren" },
+  },
   end: {
+    x: 0,
     opacity: 1,
     transition: {
+      type: "spring",
       staggerChildren: 0.25,
     },
   },
 };
 const second = {
-  start: { opacity: 0, transition: { duration: 1 } },
+  start: {
+    x: -50,
+    opacity: 0,
+    transition: { type: "spring", duration: 1 },
+  },
   end: {
+    x: 0,
     opacity: 1,
     transition: {
+      type: "spring",
       duration: 1,
       staggerChildren: 0.1,
     },
   },
 };
-const third = {
-  start: { opacity: 0, transition: { duration: 1 } },
-  end: { opacity: 1, transition: { duration: 1 } },
+const child = {
+  start: { x: -50, opacity: 0, transition: { type: "spring", duration: 1 } },
+  end: { x: 0, opacity: 1, transition: { type: "spring", duration: 1 } },
 };
 
 export default function Page() {
@@ -132,7 +144,7 @@ const Subtitle = ({ children }: { children: React.ReactNode }) => {
   return (
     <motion.h2
       style={{ fontSize: "1.25rem", fontWeight: 700 }}
-      variants={second}
+      variants={child}
     >
       {children}
     </motion.h2>
@@ -153,7 +165,7 @@ const Icon = ({
   ...props
 }: { label: string } & BoxProps & LinkProps) => {
   return (
-    <MotionBox variants={third} {...props}>
+    <MotionBox variants={child} {...props}>
       <Tooltip label={label}>
         <img
           src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${label}/${label}-original.svg`}
