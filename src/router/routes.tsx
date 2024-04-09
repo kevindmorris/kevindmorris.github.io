@@ -1,5 +1,5 @@
 import Layout from "@/components/layout";
-import { EducationPage, ExperiencePage, HomePage, ProjectsPage } from "@/pages";
+import { HomePage } from "@/pages";
 
 const routes = [
   {
@@ -9,18 +9,6 @@ const routes = [
       {
         index: true,
         element: <HomePage />,
-      },
-      {
-        path: "/experience",
-        element: <ExperiencePage />,
-      },
-      {
-        path: "/education",
-        element: <EducationPage />,
-      },
-      {
-        path: "/projects",
-        element: <ProjectsPage />,
       },
     ],
   },

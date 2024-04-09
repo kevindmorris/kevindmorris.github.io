@@ -1,70 +1,44 @@
-import { Flex, Link, LinkProps } from "@chakra-ui/react";
-import { capitalize } from "lodash";
+import { Flex, Link } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
 
 export default function Header() {
   return (
     <Flex
-      p="4"
-      alignItems={["flex-start", "center"]}
+      px={8}
+      pt={4}
       flexDirection={["column", "row"]}
       gap={4}
+      style={{
+        height: 80,
+        position: "sticky",
+        top: 0,
+        left: 0,
+        alignItems: "start",
+        backdropFilter: "blur(10px)",
+        maskImage: "linear-gradient(to bottom,white 70%,transparent 100%)",
+      }}
     >
-      <HeaderBrand href="/">kevindmorris.github.io</HeaderBrand>
-      <Flex
-        alignItems={["flex-start", "center"]}
-        flexDirection={["column", "row"]}
-        gap={4}
-      >
-        {[
-          { label: "experience", href: "/experience" },
-          { label: "education", href: "/education" },
-          { label: "projects", href: "/projects" },
-        ].map((e) => (
-          <HeaderLink key={e.href} href={e.href}>
-            {capitalize(e.label)}
-          </HeaderLink>
-        ))}
-      </Flex>
+      <HeaderBrand />
     </Flex>
   );
 }
 
-function HeaderBrand({ children, href, ...props }: LinkProps) {
+function HeaderBrand() {
   return (
     <Link
       as={NavLink}
-      to={href}
+      to="/"
       fontSize="2xl"
       fontWeight="bold"
       color="grey.900"
       textDecoration="none"
+      fontFamily="Gloria Hallelujah"
       _hover={{
-        color: "gray.500",
-        transition: "color 0.5s ease-in-out",
+        color: "gray.600",
+        transition: "color 0.2s ease-in-out",
       }}
-      {...props}
     >
-      {children}
-    </Link>
-  );
-}
-
-function HeaderLink({ children, href, ...props }: LinkProps) {
-  return (
-    <Link
-      as={NavLink}
-      to={href}
-      fontSize="md"
-      color="grey.900"
-      textDecoration="none"
-      _hover={{
-        color: "gray.500",
-        transition: "color 0.5s ease-in-out",
-      }}
-      {...props}
-    >
-      {children}
+      kevindmorris.github.io
     </Link>
   );
 }
